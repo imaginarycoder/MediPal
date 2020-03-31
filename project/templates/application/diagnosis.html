@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <title> Diagnosis </title>
+    <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader-4.css' %}">
+    <link rel="icon" href="{% static 'images/icon.png' %}" alt = "!!!">
+</head>
+<style>
+    /*body{
+      background-image: url("../images/bg_test.gif");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }  */
+</style>
+<script>
+    var myVar;
+
+    function myFunction() {
+        myVar = setTimeout(showPage, 3000);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("loader-4").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+    }
+
+</script>
+
+
+<body background="{% static 'images/bg_test.jpg' %}"  onload="myFunction()">
+    <div class="loader-wrapper" id="loader-4">
+        <div id="loader">L</div>
+        <div id="loader">O</div>
+        <div id="loader">A</div>
+        <div id="loader">D</div>
+        <div id="loader">I</div>
+        <div id="loader">N</div>
+        <div id="loader">G</div>
+    </div>
+    <div class="myDiv">
+    <br>
+    <br>
+    <p style="font-family:Lucida Console;font-size:80px; color:rgb(243, 240, 240);text-align: center;">
+        Diagnosing Parkinson’s 
+    </p><hr> 
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <table align="center">
+        <tr>
+            <td> <a href ="{% url 'application:meander' %}" class = "button2">Meander Analysis</a></td>
+            <td> <a href ="{% url 'application:spiral' %}" class = "button2">Spiral Analysis</a></td>
+            <td> <a href ="{% url 'application:circle' %}" class = "button2">Circle Analysis</a></td>
+            <td> <a href ="{% url 'application:gait' %}" class = "button2">Gait Test</a></td>
+        </tr>
+        
+    </table>
+
+    <p align="center" style="color: rgb(88, 185, 214);">  
+        We highly recommend taking all the tests mentioned for better accuracy of the results and to form a decision ultimately. 
+        Also it is important to be kept in mind that this test is not a medical confirmation that the patient suffers from Parkinson's Disease.
+    </p>
+  
+</div> 
+</body>
+
+</html>

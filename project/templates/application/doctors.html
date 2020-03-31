@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <title> Contact us </title>
+    <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="icon" href="{% static 'images/icon.png' %}" alt = "!!!">
+</head>
+
+<style>
+    body {
+      background-color: rgb(136, 194, 194);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    
+</style>
+
+<script>
+    var myVar;
+
+    function myFunction() {
+    myVar = setTimeout(showPage, 3000);
+    }
+</script>
+<body background="{% static 'images/doctors_background.jpg' %}" onload="myFunction()"></body>
+    <div class="topnav">
+        <a href="{% url 'application:index' %}">Home</a>
+        <a class = "active" href="">List of Doctors </a>
+        <a href="{% url 'application:contactPage' %}">Contact Us</a>
+        <a href="{% url 'application:aboutPage' %}">About</a>
+    </div>
+
+    <!--onclick="javascript:location.href='https://www.practo.com/indore/doctor-for-parkinson-s-disease-treatment'"-->
+
+    <p style="font-family:Lucida Console;font-size:80px; color:white;text-align: center;">
+            Doctors
+    </p><hr> 
+    
+    <form action="https://www.practo.com/indore/doctor-for-parkinson-s-disease-treatment">
+        <center><input type="submit" id="Doctors" style="display:none;" name = "doctors"></center>
+        <center><p align="center"><div class="button" ><label for = "Doctors" style="cursor:pointer;">See Doctors</label></div></p></center>
+    </form>
+
+</body>
+</html>

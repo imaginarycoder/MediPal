@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <title> Meander Analysis </title>
+    <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
+    <link rel="icon" href="{% static 'images/icon.png' %}" alt = "!!!">
+    <!--<link rel="stylesheet" href="static/css/loading_animation.css">-->
+    <link rel="stylesheet" href="{% static 'css/loader-4.css' %}">
+</head>
+
+<style>
+    body {
+      background-color: rgb(136, 194, 194);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    
+</style>
+<script>
+    function loadFile(){
+        var fileInput = document.getElementById("file");
+        var filePath=fileInput.value;
+        var allowedExtensions=/(\.jpg|\.jpeg|\.png|\.gif)$/i;
+        if(!allowedExtensions.exec(filePath)){
+            alert('Nope');
+            fileInput.value='';
+            return false;
+        }else{
+            if(fileInput.files&&fileInput.files[0]){
+                var reader=new FileReader();
+                reader.onload=function(e){
+                    document.getElementById("output").innerHTML='<img src="{% static '+e.target.results' %}" width="200"/>';
+                    
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+    }
+
+    var myVar;
+
+      function myFunction() {
+        myVar = setTimeout(showPage, 3000);
+      }
+
+      function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("loader-4").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+      }
+</script>
+
+<body background="{% static 'images/t1.jpg' %}" onload="myFunction()">
+  <div class="loader-wrapper" id="loader-4">
+    <div id="loader">L</div>
+    <div id="loader">O</div>
+    <div id="loader">A</div>
+    <div id="loader">D</div>
+    <div id="loader">I</div>
+    <div id="loader">N</div>
+    <div id="loader">G</div>
+  </div>
+
+  <div id="myDiv">
+    <br>
+    <br>
+    <p style="font-family:Lucida Console;font-size:60px; color:rgb(240, 241, 243);text-align: center;">
+        Meander Analysis
+    </p><hr> 
+
+    <p style="font-family:Lucida Console;font-size:20px; color:rgb(166, 216, 224);text-align: center;">
+        Please draw a meander like the one shown in the image and upload it here.
+    </p>
+    <p style="text-align: center;">
+        <br><br><br><img src="{% static 'images/meander_display.png' %}" height="200"width="250" border="3">
+        <br>
+        <!--
+        <p><input type="file" accept="image/*"name="image"id="file" onchange="return loadFile()" style="display:none;"></p>
+  
+        <center><p align="center"><div class="button" onclick="location.href = "{% url 'application:upload_meander' %}"" id = "Upload"><label for="file" cursor:pointer;">Upload the image</label></div></p></center>
+       
+        <center><p align="center"><div class="button" ><label for = "Upload">Predict</label></div></p></center>
+        -->
+        <!--
+        <div class="container">
+        <form action = "{% url 'application:upload_meander' %}" method="POST", enctype="multipart/form-data">{% csrf_token %}
+          <center><div class = "button"><input type="file" id="images" name = "image" required></div></center>
+          <br>
+          <center><div class = "button"><input type="submit" id="upload" value = "Upload Image"></div></center>
+        </form>
+        </div>
+        -->
+        <div class="container">
+          <form action = "{% url 'application:upload_meander' %}" method="POST", enctype="multipart/form-data"> {% csrf_token %}
+            <center><input type="file" id="Image" name = "image" onchange="return loadFile()" style = "display:none;" required></center>
+            <center><p align="center"><div class="button" ><label for = "Image" style="cursor:pointer;">Upload the image</label></div></p></center>
+
+            <center><input type="submit" id="Upload" value = "Upload Image" style="display:none;"></center>
+            <center><p align="center"><div class="button" ><label for = "Upload" style="cursor:pointer;">Predict</label></div></p></center>
+          </form>
+        </div>
+        <p><center><div id="output"></center></p>
+        
+    </p>
+    
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <title> Contact us </title>
+    <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="icon" href="{% static 'images/icon.png' %}" alt = "!!!">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="{% url 'application:index' %}">Home</a>
+        <a href="{% url 'application:doctors' %}">List of Doctors </a>
+        <a class="active" href="">Contact Us</a>
+        <a href="{% url 'application:aboutPage' %}">About</a>
+      </div>
+      
+   
+    
+    <p style="font-family:Lucida Console;font-size:80px; color:white;text-align: center;">
+            Contact the developers
+        </p><hr>        
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <title> Spiral Analysis </title>
+    <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
+    <link rel="icon" href=" {% static 'images/icon.png' %}">
+    <!--<link rel="stylesheet" href="static/css/loading_animation.css">-->
+    <!--<link rel="stylesheet" href="{% static 'css/loading_animation2.css' %}">-->
+    <link rel="stylesheet" href="{% static 'css/loader-4.css' %}">
+</head>
+<style>
+    body {
+      
+      background-color: rgb(136, 194, 194);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }  
+    #custom-text{
+        color:rgb(153, 155, 155);
+    }
+</style>
+<script>
+    var loadFile=function(event){
+        var image=document.getElementById('output');
+        var filePath = image.value;
+        var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        if(!allowedExtensions.exec(filePath)){
+            alert('Please upload file having extensions .jpeg/.jpg/.png/.gif only.');
+            fileInput.value = '';
+            return false;
+        }else{
+            image.src=URL.createObjectURL(event.target.files[0]);
+        }
+        
+    };
+
+    var myVar;
+
+      function myFunction() {
+        myVar = setTimeout(showPage, 3000);
+      }
+
+      function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("loader-4").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+      }
+
+</script>
+<body background= "{% static 'images/t1.jpg' %}" onload="myFunction()">
+    <div class="loader-wrapper" id="loader-4">
+        <div id="loader">L</div>
+        <div id="loader">O</div>
+        <div id="loader">A</div>
+        <div id="loader">D</div>
+        <div id="loader">I</div>
+        <div id="loader">N</div>
+        <div id="loader">G</div>
+    </div>
+
+    <div id="myDiv">
+        <br>
+        <br>
+        <p style="font-family:Lucida Console;font-size:60px; color:rgb(255, 255, 255);text-align: center;">
+            Spiral Analysis
+        </p><hr> 
+
+        <p style="font-family:Lucida Console;font-size:20px; color:rgb(166, 216, 224);text-align: center;">
+            Please draw a spiral like the one shown in the image and upload it here.
+        </p>
+        <p style="text-align: center;">
+            <br><br><br><img src="{% static 'images/spiral_display.png' %}"height="200"width="200" border="3">
+            <br>
+            <!--
+            <p><input type="file" accept="image/*"name="image"id="file"onchange="loadFile(event)"style="display:none;"></p>
+            <center><p align="center"><div class="button"><label for="file"style="cursor:pointer;">Upload the image</label></div></p></center>
+            <p><center><img id="output"width="200"/></center></p>
+            -->
+            <!--
+            <div class="container">
+                <form action = "{% url 'application:upload_spiral' %}" method="POST", enctype="multipart/form-data">{% csrf_token %}
+                <center><div class = "button"><input type="file" name = "image" required></div></center>
+                <br>
+                <center><div class = "button"><input type="submit" value = "Upload Image"></div></center>
+                </form>
+            </div>
+            -->
+            <div class="container">
+                <form action = "{% url 'application:upload_meander' %}" method="POST", enctype="multipart/form-data">{% csrf_token %}
+                <center><input type="file" id="Image" name = "image" onchange="return loadFile()" style = "display:none;" required></center>
+                <center><p align="center"><div class="button" ><label for = "Image" style="cursor:pointer;">Upload the image</label></div></p></center>
+    
+                <center><input type="submit" id="Upload" value = "Upload Image" style="display:none;"></center>
+                <center><p align="center"><div class="button" ><label for = "Upload" style="cursor:pointer;">Predict</label></div></p></center>
+                </form>
+            </div>
+            <p><center><div id="output"></center></p>
+        
+        </p>
+    </div>
+
+</body>
+</html>

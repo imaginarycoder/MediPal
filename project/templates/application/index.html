@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title> Parkinson's </title>
+    <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader-4.css' %}">
+    <link rel="icon" href="{% static 'images/icon.png' %}" alt = "!!!">
+    <link rel="stylesheet" href="https://s3.amazonaws.com/smatbot/files/smatbot.css.gz"><script type="text/javascript">var otherPulseDiv=document.createElement("DIV");otherPulseDiv.id="pulse_smatbot_unique";var mainDiv=document.createElement("DIV");otherPulseDiv.appendChild(mainDiv);mainDiv.id="closed";var img=document.createElement("Img");img.id="main_icon_smatest";img.src="https://s3.ap-south-1.amazonaws.com/custpostimages/sb_images/chat-loading.gif";var imgLogo=document.createElement("Img");imgLogo.id="logo-smatest";imgLogo.classList.add("logo-smatest");mainDiv.appendChild(img);mainDiv.classList.add("pointer");mainDiv.classList.add("smat-rm-div-before");img.classList.add("smat-main-btn-before");otherPulseDiv.classList.add("pulse-rm-div-before");document.addEventListener("DOMContentLoaded",function(event){document.body.appendChild(otherPulseDiv)});</script><script type="text/javascript">!function(t,e){"use strict";var r=function(t){try{var r=e.head||e.getElementsByTagName("head")[0],a=e.createElement("script"),b=document.getElementsByTagName("script")[0];a.setAttribute("type","text/javascript"),a.setAttribute("src",t),a.async=!0,r.insertBefore(a,b)}catch(t){}};t.chatbot_id=3143,r("https://s3.amazonaws.com/smatbot/files/smatbot_plugin.js.gz")}(window,document);</script><script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.5.1/fingerprint2.min.js"></script>
+</head>
+<!--
+<script src="controllers/modal.js"></script>
+<style>
+    .col-1:hover {
+        background-image: url("{% static 'images/bg1.gif' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .col-2:hover{
+        background-image: url("{% static 'images/bg2.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .col-3:hover{
+        background-image: url("{% static 'images/bg3.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .col-4:hover{
+        background-image: url("{% static 'images/bg4.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+</style>
+-->
+<body>
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href = "{% url 'application:doctors' %}">List of Doctors </a>
+        <a href = "{% url 'application:contactPage' %}">Contact Us</a>
+        <a href = "{% url 'application:aboutPage' %}">About</a>
+        <div class="topnav-right">
+            <a href="#openModal">Subscribe</a>
+        
+            <div id="openModal" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <h2 align="center">Subscribe to the Parkinson’s community</h2>
+                    <img src="{% static "images/modal_img.jpg" %}" height="200" width="200">
+                    <!--
+                    <form method="POST" action="{% url 'application:subscribers' %}"> {% csrf_token %}
+                        Email : <input type="email">
+                        <button type="submit" class="button3">Confirm</button>
+                    </form>
+                    -->
+                    
+                    <form action="{% url 'application:subscribers' %}"> {% csrf_token %} 
+
+                        <center><input type="submit" id="Subscribers" style="display:none;" name = "subscribers"></center>
+                        <center><p align="center"><div class="button" ><label for = "Subscribers" style="cursor:pointer;">Go To Subscribe Page</label></div></p></center>
+                    </form>
+                    
+                </div>        
+            </div>
+        </div>
+    </div>
+   
+    <div class="container">
+    <p style="font-family:Lucida Console;font-size:80px; color:white;text-align: center;">
+            Parkinson’s 
+        </p><hr>        
+            
+        <div class="coloumn active" background= "{% static 'images/bg1.gif' %}">
+            <div class="content">
+                <h1>1</h1>
+                <div class="box">
+                    <h2> What is Parkinson's? </h2>
+                    <p>
+                        Parkinson's disease (PD) is a neurodegenerative 
+                        disorder that affects predominately dopamine-producing
+                        (“dopaminergic”) neurons in a specific area of the brain
+                        called substantia nigra.
+                    </p>
+                </div>
+            </div>
+            <!--style="background-image: url({% static 'images/bg1.gif' %})"-->
+            <div class="bg bg1" style="background-image: url({% static 'images/bg1.gif' %})"></div>
+        </div>
+
+        <div class="coloumn" background= "{% static 'images/bg2.jpg' %}">
+            <div class="content">
+                <h1>2</h1>
+                <div class="box">
+                    <h2> How common is it? </h2>
+                    <p>
+                        Parkinson’s disease (PD) is the second most common
+                        degenerative neurological disorder after Alzheimer’s
+                        disease. 
+                    </p>
+                </div>
+            </div>
+            <div class="bg bg2" style="background-image: url({% static 'images/bg1.gif' %})"></div>
+        </div>
+
+        <div class="coloumn" background= "{% static 'images/bg3.png' %}">
+            <div class="content">
+                <h1>3</h1>
+                <div class="box">
+                    <h2> Treatment </h2>
+                    <p>
+                        Parkinson's disease can't be cured, but 
+                        medications can help control your symptoms, often 
+                        dramatically. In some later cases, surgery may be 
+                        advised.
+                    </p>
+                </div>
+            </div>
+            <div class="bg bg2" style="background-image: url({% static 'images/bg1.gif' %})"></div>
+        </div>
+
+        <div class="coloumn" background= "{% static 'images/bg4.jpg' %}">
+            <div class="content">
+                <h1>4</h1>
+                <div class="box">
+                    <h2> Diagonsis </h2>
+                    <p>
+                        No specific test exists to diagnose Parkinson's
+                        disease. This software will conclude a result on the basis of the patient's drawing, or a gait analysis 
+                        <br>
+                        <a href="{% url 'application:diagnosis' %}" class = "button">Take The Test</a>
+                        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+                       
+                    </p>
+                </div>
+            </div>
+            <div class="bg bg2" style="background-image: url({% static 'images/bg1.gif' %})"></div>
+        </div>
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript">
+            $(document).on('mouseover','.container .coloumn',function(){
+                $(this).addClass('active').siblings().removeClass('active')
+            })    
+        </script>
+
+    </div>    
+
+</body>
+
+</html>
