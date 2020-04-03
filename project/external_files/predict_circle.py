@@ -6,15 +6,17 @@ import os, sys
 import pickle
 from PIL import Image
 LABELS = ['Healthy', 'Patient']
-TEST_DATADIR = 'C:\\Minor\\Minor_django\\project\\media'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EXTERNAL_DIR = os.path.join(BASE_DIR, 'external_files')
+TEST_DATADIR = os.path.join(BASE_DIR, 'media')
 def openFile_svm():
-    with open('C:\\Minor\\Minor_django\\project\\external_files\\model_parkinson_svm_circle.pkl', 'rb') as file:
+    with open(os.path.join(EXTERNAL_DIR, 'model_parkinson_svm_circle.pkl'), 'rb') as file:
         model = pickle.load(file)
         file.close()
     return model
 
 def openFile_naive_bayes():
-    with open('C:\\Minor\\Minor_django\\project\\external_files\\model_parkinson_bayes_circle.pkl', 'rb') as file:
+    with open(os.path.join(EXTERNAL_DIR, 'model_parkinson_bayes_circle.pkl'), 'rb') as file:
         model = pickle.load(file)
         file.close()
     return model
