@@ -50,7 +50,31 @@ opacity: 1;
     <div class="topnav">
         <a href="{% url 'application:index' %}">Home</a>
         <a class = "active" href="">List of Doctors </a>
+        <div class="topnav-right">
+		
+            <a href="#openModal">Subscribe</a>
         
+            <div id="openModal" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <h2 align="center">Subscribe to the Parkinson’s community</h2>
+					<!--<img src="{% static "images/modal_img.jpg" %}" height="200" width="200" align="center">
+                    </img>
+					<form method="POST" action="{% url 'application:subscribers' %}"> {% csrf_token %}
+                        Email : <input type="email">
+                        <button type="submit" class="button3">Confirm</button>
+                    </form>
+                    -->
+                    
+                    <form action="{% url 'application:subscribers' %}"> {% csrf_token %} 
+
+                        <center><input type="submit" id="Subscribers" style="display:none;" name = "subscribers"></center>
+                        <center><p align="center"><div class="button" ><label for = "Subscribers" style="cursor:pointer;">Go To Subscribe Page</label></div></p></center>
+                    </form>
+                    
+                </div>        
+            </div>
+        </div>    
     </div>
 
     <!--onclick="javascript:location.href='https://www.practo.com/indore/doctor-for-parkinson-s-disease-treatment'"-->
