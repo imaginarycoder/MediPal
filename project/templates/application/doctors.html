@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <head>
-    <title> Contact us </title>
+    <title> List Of Doctors </title>
     <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="icon" href="{% static 'images/icon.png' %}" alt = "!!!">
@@ -11,9 +11,30 @@
     body {
       background-color: rgb(136, 194, 194);
       background-repeat: no-repeat;
-      background-size: cover;
-    }
-    
+      background-size: cover;    
+	
+	}
+	
+	div {
+	background-color: rgb(59,121,156);
+	z-index:-1;
+   }
+   
+  p{
+  font-family:Lucida Console;
+  font-size:80px;
+  color:white;
+  text-align: center;
+  font-weight: bold;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+  padding-bottom:2px;
+  padding-top:2px;
+  z-index:900;
+opacity: 1;
+  
+ }
+	
     
 </style>
 
@@ -24,23 +45,22 @@
     myVar = setTimeout(showPage, 3000);
     }
 </script>
-<body background="{% static 'images/doctors_background.jpg' %}" onload="myFunction()"></body>
+
+<body background="{% static 'images/doctors_background.gif' %}" onload="myFunction()" >
     <div class="topnav">
         <a href="{% url 'application:index' %}">Home</a>
         <a class = "active" href="">List of Doctors </a>
-        <a href="{% url 'application:contactPage' %}">Contact Us</a>
-        <a href="{% url 'application:aboutPage' %}">About</a>
+        
     </div>
 
     <!--onclick="javascript:location.href='https://www.practo.com/indore/doctor-for-parkinson-s-disease-treatment'"-->
+<div class="first">
+    <p>List Of Doctors</p>
+</div>    
 
-    <p style="font-family:Lucida Console;font-size:80px; color:white;text-align: center;">
-            Doctors
-    </p><hr> 
-    
     <form action="https://www.practo.com/indore/doctor-for-parkinson-s-disease-treatment">
         <center><input type="submit" id="Doctors" style="display:none;" name = "doctors"></center>
-        <center><p align="center"><div class="button" ><label for = "Doctors" style="cursor:pointer;">See Doctors</label></div></p></center>
+        <center><p align="center" font-size="30px";><div class="button" ><label for = "Doctors" style="cursor:pointer;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp See Doctors &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label></div></p></center>
     </form>
 
 </body>

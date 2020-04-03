@@ -10,10 +10,22 @@
 
 <style>
     body {
-      background-color: rgb(136, 194, 194);
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
+      background-color: rgb(238, 104, 118);
+     }
+    .abc{
+	overflow: auto;
+	z-index: -1;
+	position: absolute;
+	padding-left: 50%
+	}
+    h1{
+	font-family:Lucida Console; 
+	color:rgb(240, 241, 243);
+	text-align: center;
+	font-size: 70px;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+	}
     
     
 </style>
@@ -51,7 +63,7 @@
       }
 </script>
 
-<body background="{% static 'images/t1.jpg' %}" onload="myFunction()">
+<body  onload="myFunction()">
   <div class="loader-wrapper" id="loader-4">
     <div id="loader">L</div>
     <div id="loader">O</div>
@@ -62,35 +74,48 @@
     <div id="loader">G</div>
   </div>
 
-  <div id="myDiv">
-    <br>
-    <br>
-    <p style="font-family:Lucida Console;font-size:60px; color:rgb(240, 241, 243);text-align: center;">
-        Circle Analysis
-    </p><hr> 
+<div id="myDiv">
+      <div class="topnav">
+          <a class="active" href="{% url 'application:index' %}">Home</a>
+          <a href = "{% url 'application:doctors' %}">List of Doctors </a>
+          <div class="topnav-right">
+		
+            <a href="#openModal">Subscribe</a>
+        
+            <div id="openModal" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <h2 align="center">Subscribe to the Parkinson’s community</h2>
+                    
+                    <form action="{% url 'application:subscribers' %}"> {% csrf_token %} 
 
+                        <center><input type="submit" id="Subscribers" style="display:none;" name = "subscribers"></center>
+                        <center><p align="center"><div class="button" ><label for = "Subscribers" style="cursor:pointer;">Go To Subscribe Page</label></div></p></center>
+                    </form>
+                    
+                </div>        
+
+            </div>
+      </div>
+</div>
+      <br>
+      
+      <h1 style="font-family:Lucida Console;font-size:60px; color:rgb(240, 241, 243);text-align: center;">
+          Circle Analysis
+      </h1> 
+
+<div style="background-color: #f52c5b">	
     <p style="font-family:Lucida Console;font-size:20px; color:rgb(166, 216, 224);text-align: center;">
         Please draw a circle like the one shown in the image and upload it here.
     </p>
+</div>
+<div class="abc">  <img src="{% static 'images/t3.gif' %}" height="500px" width="960px"></img></div>
+
     <p style="text-align: center;">
+	
         <br><br><br><img src="{% static 'images/circle_display.jpg' %}" height="200"width="250" border="3">
         <br>
-        <!--
-        <p><input type="file" accept="image/*"name="image"id="file" onchange="return loadFile()" style="display:none;"></p>
-  
-        <center><p align="center"><div class="button" onclick="location.href = "{% url 'application:upload_meander' %}"" id = "Upload"><label for="file" cursor:pointer;">Upload the image</label></div></p></center>
-       
-        <center><p align="center"><div class="button" ><label for = "Upload">Predict</label></div></p></center>
-        -->
-        <!--
-        <div class="container">
-        <form action = "{% url 'application:upload_meander' %}" method="POST", enctype="multipart/form-data">{% csrf_token %}
-          <center><div class = "button"><input type="file" id="images" name = "image" required></div></center>
-          <br>
-          <center><div class = "button"><input type="submit" id="upload" value = "Upload Image"></div></center>
-        </form>
-        </div>
-        -->
+
         <div class="container">
           <form action = "{% url 'application:upload_circle' %}" method="POST", enctype="multipart/form-data">{% csrf_token %}
             <center><input type="file" id="Image" name = "image" onchange="return loadFile()" style = "display:none;" required></center>
@@ -104,7 +129,7 @@
         
     </p>
     
-  </div>
+</div>
 </body>
 
 </html>

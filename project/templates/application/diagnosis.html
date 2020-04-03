@@ -7,11 +7,11 @@
     <link rel="icon" href="{% static 'images/icon.png' %}" alt = "!!!">
 </head>
 <style>
-    /*body{
-      background-image: url("../images/bg_test.gif");
-      background-repeat: no-repeat;
-      background-size: cover;
-    }  */
+    h1 {
+  /* Prefix required. Even Firefox only supports the -webkit- prefix */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+}
 </style>
 <script>
     var myVar;
@@ -29,7 +29,7 @@
 </script>
 
 
-<body background="{% static 'images/bg_test.jpg' %}"  onload="myFunction()">
+<body background="{% static 'images/bg_test.gif' %}"  onload="myFunction()">
     <div class="loader-wrapper" id="loader-4">
         <div id="loader">L</div>
         <div id="loader">O</div>
@@ -40,38 +40,68 @@
         <div id="loader">G</div>
     </div>
     <div class="myDiv">
+        <div class="topnav">
+            <a class="active" href="{% url 'application:index' %}">Home</a>
+            <a href = "{% url 'application:doctors' %}">List of Doctors </a>
+            <div class="topnav-right">
+            
+                <a href="#openModal">Subscribe</a>
+            
+                <div id="openModal" class="modalDialog">
+                    <div>
+                        <a href="#close" title="Close" class="close">X</a>
+                        <h2 align="center">Subscribe to the Parkinson’s community</h2>
+                        
+                        <form action="{% url 'application:subscribers' %}"> {% csrf_token %} 
+
+                            <center><input type="submit" id="Subscribers" style="display:none;" name = "subscribers"></center>
+                            <center><p align="center"><div class="button" ><label for = "Subscribers" style="cursor:pointer;">Go To Subscribe Page</label></div></p></center>
+                        </form>
+                        
+                    </div>        
+
+                </div>
+            </div>
+        </div>
+    </div>
     <br>
     <br>
-    <p style="font-family:Lucida Console;font-size:80px; color:rgb(243, 240, 240);text-align: center;">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+	<br>
+    <br>
+    <br>
+	<h1 style="font-family:Lucida Console;font-size:80px; color:#10469c;text-align: center; font-weight: bold"">
         Diagnosing Parkinson’s 
-    </p><hr> 
+    </h1>
+    
     
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    
     <table align="center">
         <tr>
-            <td> <a href ="{% url 'application:meander' %}" class = "button2">Meander Analysis</a></td>
-            <td> <a href ="{% url 'application:spiral' %}" class = "button2">Spiral Analysis</a></td>
-            <td> <a href ="{% url 'application:circle' %}" class = "button2">Circle Analysis</a></td>
-            <td> <a href ="{% url 'application:gait' %}" class = "button2">Gait Test</a></td>
+            <td> <a href ="{% url 'application:meander' %}" class = "button2">Meander Analysis</a>&nbsp&nbsp&nbsp&nbsp&nbsp</td>&nbsp&nbsp&nbsp&nbsp&nbsp
+            <td> <a href ="{% url 'application:spiral' %}" class = "button2">Spiral Analysis</a>&nbsp&nbsp&nbsp&nbsp&nbsp</td>&nbsp&nbsp&nbsp&nbsp&nbsp
+            <td> <a href ="{% url 'application:circle' %}" class = "button2">Circle Analysis</a>&nbsp&nbsp&nbsp&nbsp&nbsp</td>&nbsp&nbsp&nbsp&nbsp&nbsp
+            <td> <a href ="{% url 'application:gait' %}" class = "button2">Gait Test</a>&nbsp&nbsp&nbsp&nbsp&nbsp</td>&nbsp&nbsp&nbsp&nbsp&nbsp
         </tr>
         
     </table>
+	<br>
+	<br>
+    <div style="background-color:#10469c">
+        <p align="center" style="color: rgb(250, 250, 250); font-size: 20px; font-weight: bold" >  
+            The tests are not a medical confirmation that the patient suffers from Parkinson's Disease.
+        </p>
+        <p align="center" style="color: rgb(250, 250, 250); font-size: 20px; font-weight: bold">      
+        We highly recommend taking all the tests mentioned for better accuracy of the results.</p> 	
+    </div> 
 
-    <p align="center" style="color: rgb(88, 185, 214);">  
-        We highly recommend taking all the tests mentioned for better accuracy of the results and to form a decision ultimately. 
-        Also it is important to be kept in mind that this test is not a medical confirmation that the patient suffers from Parkinson's Disease.
-    </p>
-  
-</div> 
 </body>
 
 </html>
