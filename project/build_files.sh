@@ -2,7 +2,7 @@
 
 # Used by Vercel to build the application and deploy.
 echo "BUILDING THE PROJECT"
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 
 echo "MAKING MIGRATIONS"
 # python3.6 manage.py makemigrations --noinput
