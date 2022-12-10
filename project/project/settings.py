@@ -133,7 +133,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = STATIC_DIR,
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static') # While deploying to Vercel, Refernce video: https://www.youtube.com/watch?v=HUlHUQcCIuo
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static') # While deploying to Vercel, Reference video: https://www.youtube.com/watch?v=HUlHUQcCIuo
 
 # Commented out for Vercel Deployment. This worked otherwise.
 # STATICFILES_DIRS = [
