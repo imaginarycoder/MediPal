@@ -33,7 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '.vercel.app',
-    '.now.sh',
+    '.now.sh'
     #'127.0.0.1'
 ]   # This is for Vercel deployment and earlier in heroku this was left blank because of errors.
     # IMP: To run in my local machine - Remember to make '127.0.0.1' as allowed host.
