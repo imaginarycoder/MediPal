@@ -27,9 +27,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'kp!@%*v57t6y1(358rg!9fk$2p@cfri(qo)&3r(w6#gjq1e-qq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh']   # This is for Vercel deployment and earlier in heroku this was left blank because of errors.
+ALLOWED_HOSTS = [
+    '.vercel.app',
+    '.now.sh',
+    # '127.0.0.1'
+]   # This is for Vercel deployment and earlier in heroku this was left blank because of errors.
+    # IMP: To run in my local machine - Remember to make '127.0.0.1' as allowed host.
 
 # Application definition
 
