@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
+from decouple import config 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,12 +29,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'kp!@%*v57t6y1(358rg!9fk$2p@cfri(qo)&3r(w6#gjq1e-qq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '.vercel.app',
     '.now.sh',
-    # '127.0.0.1'
+    #'127.0.0.1'
 ]   # This is for Vercel deployment and earlier in heroku this was left blank because of errors.
     # IMP: To run in my local machine - Remember to make '127.0.0.1' as allowed host.
 
@@ -84,12 +86,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+    # Commented out for Vercel Deployment.
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
+DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -128,7 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    STATIC_DIR,
-]
+STATICFILES_DIRS = STATIC_DIR,
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static') # While deploying to Vercel, Refernce video: https://www.youtube.com/watch?v=HUlHUQcCIuo
+
+# Commented out for Vercel Deployment. This worked otherwise.
+# STATICFILES_DIRS = [
+#     STATIC_DIR,
+# ]
