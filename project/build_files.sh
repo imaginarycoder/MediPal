@@ -5,10 +5,10 @@ echo "BUILDING THE PROJECT"
 python3.6 -m pip install -r requirements.txt
 
 echo "MAKING MIGRATIONS"
-python3.6 manage.py makemigrations --noinput
-python3.6 manage.py migrate --noinput
+# python3.6 manage.py makemigrations --noinput
+# python3.6 manage.py migrate --noinput
 
 echo "COLLECT STATIC"
 python3.6 manage.py collectstatic --noinput --clear
 
-echo  "BUILD END"
+echo "BUILD END"
