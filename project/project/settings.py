@@ -29,8 +29,7 @@ SECRET_KEY = 'kp!@%*v57t6y1(358rg!9fk$2p@cfri(qo)&3r(w6#gjq1e-qq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['.vercel.app','.now.sh']   # This is for Vercel deployment and earlier in heroku this was left blank because of errors.
 
 # Application definition
 
@@ -127,3 +126,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static') # While deploying to Vercel, Refernce video: https://www.youtube.com/watch?v=HUlHUQcCIuo
