@@ -9,6 +9,6 @@ echo "MAKING MIGRATIONS"
 # python3.6 manage.py migrate --noinput
 
 echo "COLLECT STATIC"
-python3.6.8 manage.py collectstatic --noinput --clear
+python3.6.8 manage.py collectstatic
 
 echo "BUILD END"
