@@ -48,6 +48,7 @@ rsa==4.0
 scipy==1.1.0
 six==1.14.0
 sqlparse==0.3.0
+scikit-learn==0.19.2
 tornado==6.0.4
 urllib3==1.25.8
 Werkzeug==0.16.1
@@ -58,11 +59,11 @@ wrapt==1.12.1
 tensorflow==2.0.0
 setuptools>=40.3.0
 cryptography>=2.8
+protobuf==3.19.6
 tensorboard<2.1.0,>=2.0.0
 termcolor>=1.1.0
 tensorflow-estimator<2.1.0,>=2.0.0
-protobuf>=3.6.1
-jsonify=0.5
-pandas=1.1.5
+jsonify==0.5
+pandas==1.1.5
 python-decouple==3.6
 psycopg2-binary==2.9.5
