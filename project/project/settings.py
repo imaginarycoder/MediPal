@@ -32,11 +32,8 @@ SECRET_KEY = 'kp!@%*v57t6y1(358rg!9fk$2p@cfri(qo)&3r(w6#gjq1e-qq'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '.vercel.app',
-    '.now.sh'
-    #'127.0.0.1'
-]   # This is for Vercel deployment and earlier in heroku this was left blank because of errors.
-    # IMP: To run in my local machine - Remember to make '127.0.0.1' as allowed host.
+    '*'
+]   
 
 # Application definition
 
@@ -85,13 +82,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    # Commented out for Vercel Deployment.
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # DATABASES['default'] = dj_database_url.config()
 
@@ -135,7 +131,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = STATIC_DIR,
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static') # While deploying to Vercel, Reference video: https://www.youtube.com/watch?v=HUlHUQcCIuo
 
-# Commented out for Vercel Deployment. This worked otherwise.
 # STATICFILES_DIRS = [
 #     STATIC_DIR,
 # ]
