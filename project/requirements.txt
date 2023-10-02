@@ -57,7 +57,7 @@ win-inet-pton==1.1.0
 wincertstore==0.2
 wrapt==1.12.1
 setuptools>=40.3.0
-cryptography>=2.8
+cryptography==40.0.2
 protobuf==3.19.6
 termcolor>=1.1.0
 jsonify==0.5
