@@ -128,8 +128,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = STATIC_DIR,
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static') # While deploying to Vercel, Reference video: https://www.youtube.com/watch?v=HUlHUQcCIuo
 
 STATICFILES_DIRS = [
     STATIC_DIR,
