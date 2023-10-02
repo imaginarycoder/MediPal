@@ -17,7 +17,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_DIR = os.path.join(BASE_DIR, 'static')
 PICKLE_DIR = os.path.join(BASE_DIR, 'pickle_files')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -129,8 +130,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = STATIC_DIR
-
-# STATICFILES_DIRS = [
-#     STATIC_DIR
-# ]
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, 'checkstatic/static/')
+]
