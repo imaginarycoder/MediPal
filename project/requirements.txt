@@ -56,13 +56,10 @@ whitenoise==5.0.1
 win-inet-pton==1.1.0
 wincertstore==0.2
 wrapt==1.12.1
-tensorflow==2.0.0
 setuptools>=40.3.0
 cryptography>=2.8
 protobuf==3.19.6
-tensorboard<2.1.0,>=2.0.0
 termcolor>=1.1.0
-tensorflow-estimator<2.1.0,>=2.0.0
 jsonify==0.5
 pandas==1.1.5
 python-decouple==3.6
