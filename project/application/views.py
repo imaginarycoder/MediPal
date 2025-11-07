@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django import forms
-from application import scripts
 from subprocess import run, PIPE
 from django.core.files.storage import FileSystemStorage
 import sys
@@ -9,9 +8,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXTERNAL_DIR = os.path.join(BASE_DIR, 'external_files')
 
-#from application.models import Subscribers
 from application.forms import NewSubscriberForm
-# Create your views here.
 
 def index(request):
     return render(request, 'application/index.html')
