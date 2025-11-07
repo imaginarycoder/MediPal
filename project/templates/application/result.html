@@ -29,10 +29,11 @@
     }
 </script>
 
-<body background="{% static 'images/bg11.jpg' %}" onload="myFunction()">
+<body background="{% static 'images/result_bg.jpg' %}" onload="myFunction()">
     <div class="topnav">
         <a href = "{% url 'application:index' %}">Home</a>
         <a href = "{% url 'application:doctors' %}">List of Doctors </a>
+        <a href = "{% url 'application:diagnosis' %}">Diagnosis</a>
         <div class="topnav-right">
 		
             <a href="#openModal">Subscribe</a>
@@ -65,7 +66,7 @@
     {% if raw_url or edit_url %}
 
     <span>
-        <center> <h2 style="font-family:Lucida Console;font-size:50px; color:white;text-align: center;"> UPLOADED IMAGE: </h2> </center>
+        <center> <h2 style="font-family:Lucida Console;font-size:50px; color:black;text-align: center;"> UPLOADED IMAGE: </h2> </center>
         <br>
         <center><img src = {{raw_url}} height=250 width=250> </center>
     <!--
@@ -79,7 +80,7 @@
 
     {% if result %}
 
-    <center><p style="font-family:Lucida Console;font-size:40px; color:white;text-align: center;">{{result}}</p></center>
+    <center><p style="font-family:Lucida Console;font-size:40px; color:black;text-align: center;">{{result}}</p></center>
 
     {%else%}
 
@@ -90,7 +91,7 @@
     {% if "Unhealthy" in result %}
     <form action="{% url 'application:doctors' %}">
     <center><input type="submit" id="Doctors" style="display:none;" name = "doctors"></center>
-    <center><p align="center"><div class="button" ><label for = "Doctors" style="cursor:pointer;">See Doctors</label></div></p></center>
+    <center><p align="center"><div class="button" ><label for = "Doctors" style="cursor:pointer;">Professional Consultation</label></div></p></center>
     </form>
     {% endif %}
     </div>

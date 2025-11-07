@@ -51,7 +51,8 @@ opacity: 1;
 <body background="{% static 'images/doctors_background.gif' %}" onload="myFunction()" >
     <div class="topnav">
         <a href="{% url 'application:index' %}">Home</a>
-        <a class = "active" href="">List of Doctors </a>
+        <a class = "active" href="#">List of Doctors </a>
+        <a href = "{% url 'application:diagnosis' %}">Diagnosis</a>
         <div class="topnav-right">
 		
             <a href="#openModal">Subscribe</a>
