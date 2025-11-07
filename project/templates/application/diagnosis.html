@@ -57,7 +57,7 @@
                         <form action="{% url 'application:subscribers' %}"> {% csrf_token %} 
 
                             <center><input type="submit" id="Subscribers" style="display:none;" name = "subscribers"></center>
-                            <center><p align="center"><div class="button" ><label for = "Subscribers" style="cursor:pointer;">Go To Subscribe Page</label></div></p></center>
+                            <center><p align="center"><div class="button" ><label for = "Subscribers" style="cursor:pointer;">I Would Love To Subscribe</label></div></p></center>
                         </form>
                         
                     </div>        
@@ -90,7 +90,6 @@
             <td> <a href ="{% url 'application:meander' %}" class = "button2">Meander Analysis</a>&nbsp&nbsp&nbsp&nbsp&nbsp</td>&nbsp&nbsp&nbsp&nbsp&nbsp
             <td> <a href ="{% url 'application:spiral' %}" class = "button2">Spiral Analysis</a>&nbsp&nbsp&nbsp&nbsp&nbsp</td>&nbsp&nbsp&nbsp&nbsp&nbsp
             <td> <a href ="{% url 'application:circle' %}" class = "button2">Circle Analysis</a>&nbsp&nbsp&nbsp&nbsp&nbsp</td>&nbsp&nbsp&nbsp&nbsp&nbsp
-            <td> <a href ="{% url 'application:gait' %}" class = "button2">Gait Test</a>&nbsp&nbsp&nbsp&nbsp&nbsp</td>&nbsp&nbsp&nbsp&nbsp&nbsp
         </tr>
         
     </table>
@@ -101,7 +100,7 @@
             The tests are not a medical confirmation that the patient suffers from Parkinson's Disease.
         </p>
         <p align="center" style="color: rgb(250, 250, 250); font-size: 20px; font-weight: bold">      
-        We highly recommend taking all the tests mentioned for better accuracy of the results.</p> 	
+        We recommend taking all the tests mentioned for better accuracy of the results.</p> 	
     </div> 
 
 </body>
