@@ -38,7 +38,7 @@ def circle(request):
     return render(request, 'application/circle.html')
 
 def gait(request):
-#    return render(request, 'application/gait.html')
+    # return render(request, 'application/gait.html')
     run([sys.executable, os.path.join(EXTERNAL_DIR,'webcamGait.py')], shell=False, stdout=PIPE)
     return render(request, 'application/gait.html')
 
@@ -55,12 +55,7 @@ def subscribers(request):
         else:
             print('ERROR: FORM INVALID')
     form_dict = {'form':form}
-    return render(request, 'application/subscribers.html', context = form_dict)        
-"""
-    subscribers_list = Subscribers.objects.order_by('email')
-    subscribers_dict = {'subscribers':subscribers_list}
-    return render(request, 'application/see_subscribers.html', context = subscribers_dict)
-"""
+    return render(request, 'application/subscribers.html', context = form_dict)
 
 def upload_spiral(request):
     if request.method == "POST":
@@ -73,16 +68,10 @@ def upload_spiral(request):
         print('File raw url: ',filename)
         print('File full url: ', fileurl)
         print('Template url: ', templateurl)
-        #image_processed = run([sys.executable, 'C:\\Minor\\Minor_django\\image_processing.py', str(fileurl), str(filename)], shell=False, stdout=PIPE)
-        image_predict = run([sys.executable, os.path.join(EXTERNAL_DIR,'predict_spiral.py'), str(fileurl), str(filename)], shell=False, stdout=PIPE) #A cloud path can be given later for this external file
-        if(b"Patient" in image_predict.stdout):
-            result = "Patient"
-        elif(b"Healthy" in image_predict.stdout):
-            result = "Healthy"
-        else:
-            result = "Sorry, no value"
+        image_predict = run([sys.executable, os.path.join( EXTERNAL_DIR ,'predict_spiral.py'), str(fileurl), str(filename)], shell=False, stdout=PIPE)
+        result = image_predict.stdout.decode()
+        print(result)
         my_dict = {'raw_url':templateurl, 'result':result}
-        #print(image_processed.stdout)
         return render(request, 'application/result.html', context = my_dict)
 
 def upload_meander(request):
@@ -96,16 +85,10 @@ def upload_meander(request):
         print('File raw url: ',filename)
         print('File full url: ', fileurl)
         print('Template url: ', templateurl)
-        #image_processed = run([sys.executable, 'C:\\Minor\\Minor_django\\image_processing.py', str(fileurl), str(filename)], shell=False, stdout=PIPE)
-        image_predict = run([sys.executable, os.path.join(EXTERNAL_DIR, 'predict_meander.py'), str(fileurl), str(filename)], shell=False, stdout=PIPE) #A cloud path can be given later for this external file
-        if(b"Patient" in image_predict.stdout):
-            result = "Patient"
-        elif(b"Healthy" in image_predict.stdout):
-            result = "Healthy"
-        else:
-            result = "Sorry, no value"
+        image_predict = run([sys.executable, os.path.join( EXTERNAL_DIR ,'predict_meander.py'), str(fileurl), str(filename)], shell=False, stdout=PIPE)
+        result = image_predict.stdout.decode()
+        print(result)
         my_dict = {'raw_url':templateurl, 'result':result}
-        #print(image_processed.stdout)
         return render(request, 'application/result.html', context = my_dict)
 
 def upload_circle(request):
@@ -119,14 +102,8 @@ def upload_circle(request):
         print('File raw url: ',filename)
         print('File full url: ', fileurl)
         print('Template url: ', templateurl)
-        #image_processed = run([sys.executable, 'C:\\Minor\\Minor_django\\image_processing.py', str(fileurl), str(filename)], shell=False, stdout=PIPE)
-        image_predict = run([sys.executable, os.path.join( EXTERNAL_DIR ,'predict_circle.py'), str(fileurl), str(filename)], shell=False, stdout=PIPE) #A cloud path can be given later for this external file
-        if(b"Patient" in image_predict.stdout):
-            result = "Patient"
-        elif(b"Healthy" in image_predict.stdout):
-            result = "Healthy"
-        else:
-            result = "Sorry, no value"
+        image_predict = run([sys.executable, os.path.join( EXTERNAL_DIR ,'predict_circle.py'), str(fileurl), str(filename)], shell=False, stdout=PIPE)
+        result = image_predict.stdout.decode()
+        print(result)
         my_dict = {'raw_url':templateurl, 'result':result}
-        #print(image_processed.stdout)
-        return render(request, 'application/result.html', context = my_dict) 
+        return render(request, 'application/result.html', context = my_dict)

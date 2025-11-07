@@ -1,61 +1,56 @@
 import numpy as np
-import pandas as pd
-#import matplotlib.pyplot as plt
 import cv2
 import os, sys
-import pickle
+import tensorflow as tf
 from PIL import Image
-LABELS = ['Healthy', 'Patient']
+
+LABELS = ['Healthy', 'Unhealthy']
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXTERNAL_DIR = os.path.join(BASE_DIR, 'external_files')
 TEST_DATADIR = os.path.join(BASE_DIR, 'media')
-def openFile_svm():
-    with open(os.path.join(EXTERNAL_DIR, 'model_parkinson_svm_spiral.pkl'), 'rb') as file:
-        model = pickle.load(file)
-        file.close()
+
+np.set_printoptions(suppress=True)
+
+def model_load():
+    model = tf.keras.models.load_model(os.path.join(EXTERNAL_DIR, 'keras_model_spiral.h5'), compile=False)
     return model
 
-def openFile_naive_bayes():
-    with open(os.path.join(EXTERNAL_DIR, 'model_parkinson_bayes_spiral.pkl'), 'rb') as file:
-        model = pickle.load(file)
-        file.close()
-    return model
+def prepare(image_name):
 
-def prepare(img_name):
     image_fullpath = sys.argv[1]
     image_name = sys.argv[2]
 
     image = Image.open(str(image_fullpath))
+
+    # To check if the image has an alpha channel present in PNG images (RGBA mode) or 'P' mode (palette-based)
+    if image.mode in ('RGBA', 'P'):
+        background = Image.new("RGB", image.size, (255, 255, 255))
+        background.paste(image, mask = image.split()[3])
+        image = background.convert('RGB')
+    
     image_save_path = image_fullpath.replace(image_name, 'temp.jpg')
     image.save(image_save_path)
 
-    print('\media\temp.jpg')
+    test_image_path = os.path.join(TEST_DATADIR, image_name)
+    image = cv2.imread(test_image_path)
 
-    IMG_SIZE = 400
-    path = os.path.join(TEST_DATADIR, img_name)
-    """path,"""
-    #DIR = str(image_save_path)
-    image_array = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
-    #image_array = cv2.imread(image_name, cv2.IMREAD_GRAYSCALE)
-    #print(image_array.shape)
-    latest_array = cv2.resize(image_array, (IMG_SIZE,IMG_SIZE))
-    #plt.imshow(latest_array)
-    #plt.show()
-    #print(latest_array.shape)
-    latest_array = latest_array.reshape(1,IMG_SIZE*IMG_SIZE)
-    latest_array = latest_array/255.0
-    return latest_array
+    if image is None:
+        print("Error: Image not loaded. Check the file path and name.")
+    else:
+        image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
+        image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
+        image = (image / 127.5) - 1
 
+    return image
 
-def main_function_svm():
-    model = openFile_svm()
-    prediction = LABELS[model.predict(prepare('temp.jpg'))[0]]
-    print('',prediction)
+def predict():
+    model = model_load()
+    prediction = model.predict(prepare('temp.jpg'))
+    index = np.argmax(prediction)
+
+    class_name = LABELS[index]
+    confidence_score = prediction[0][index]
     
-def main_function_naive_bayes():
-    model = openFile_naive_bayes()
-    prediction = LABELS[model.predict(prepare('temp.jpg'))[0]]
-    print('',prediction)
-    
-#main_function_naive_bayes()
-main_function_svm()
+    print("Result:", class_name, " and ", "Confidence:", str(np.round(confidence_score * 100))[:-2], "%")
+
+predict()
