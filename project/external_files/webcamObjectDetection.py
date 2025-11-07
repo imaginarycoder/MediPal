@@ -1,4 +1,4 @@
-# Refer to the following page https://www.pyimagesearch.com/2017/09/18/real-time-object-detection-with-deep-learning-and-opencv/
+# Future Enhancement
 
 import argparse
 import time
