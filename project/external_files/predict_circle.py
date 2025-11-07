@@ -1,8 +1,7 @@
 import numpy as np
-import cv2
 import os, sys
 import tensorflow as tf
-from PIL import Image
+from PIL import Image, ImageOps
 
 LABELS = ['Healthy', 'Unhealthy']
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -16,7 +15,6 @@ def model_load():
     return model
 
 def prepare(image_name):
-
     image_fullpath = sys.argv[1]
     image_name = sys.argv[2]
 
@@ -32,20 +30,22 @@ def prepare(image_name):
     image.save(image_save_path)
 
     test_image_path = os.path.join(TEST_DATADIR, image_name)
-    image = cv2.imread(test_image_path)
+    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+    image = Image.open(test_image_path).convert("RGB")
+    size = (224, 224)
+    image = ImageOps.fit(image, size, Image.Resampling.LANCZOS)
 
-    if image is None:
-        print("Error: Image not loaded. Check the file path and name.")
-    else:
-        image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
-        image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
-        image = (image / 127.5) - 1
+    image_array = np.asarray(image)
 
-    return image
+    normalized_image_array = (image_array.astype(np.float32) / 127.5) - 1
+
+    data[0] = normalized_image_array
+
+    return data
 
 def predict():
     model = model_load()
-    prediction = model.predict(prepare('temp.jpg'))
+    prediction = model.predict(prepare('temp.jpg'), verbose=0)
     index = np.argmax(prediction)
 
     class_name = LABELS[index]
